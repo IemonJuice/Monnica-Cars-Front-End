@@ -1,4 +1,4 @@
-.nav{
+.nav {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,40 +6,71 @@
   height: 100px;
   background-color: black;
   overflow-y: hidden;
-  .container{
+
+  .container {
     width: 95%;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  &__logo{
+
+  &__logo {
     overflow-y: hidden;
-    img{
+
+    img {
       height: 150px;
       object-fit: contain;
       transition-duration: 200ms;
-      &:hover{
+
+      &:hover {
         transition-duration: 200ms;
         scale: 2;
       }
     }
   }
-  &__links, &__links ul{
+
+  &__links, &__links ul {
     display: flex;
-    gap:20px;
-    font-size: 0.9em;
+    gap: 20px;
+    text-transform: uppercase;
     justify-content: center;
     align-items: center;
     color: white;
 
-    li:hover{
+    li:hover {
       padding-bottom: 10px;
       transition-duration: 400ms;
       border-bottom: 1px solid white;
       cursor: pointer;
     }
-    li{
+
+    li {
       transition-duration: 400ms;
     }
   }
+
+  @media(max-width: 768px) {
+    &__links {
+      display: none;
+    }
+    .burger{
+      display: flex;
+    }
+  }
 }
+.burger{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap:10px;
+  & > div{
+    width: 40px;
+    height: 1px;
+    background-color: white;
+  }
+}
+
+
+
+

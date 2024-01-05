@@ -2,9 +2,6 @@ import {Routes} from "@angular/router";
 
 export const routes:Routes = [
   {
-    path:'',loadChildren:() => import('./pages/main-page/main-page.module').then(m => m.MainPageModule)
-  },
-  {
     path:'main',loadChildren:() => import('./pages/main-page/main-page.module').then(m => m.MainPageModule)
   },
   {
@@ -15,5 +12,8 @@ export const routes:Routes = [
   },
   {
     path:'checkout', loadChildren: () => import('./pages/checkout-page/checkout-page.module').then(m => m.CheckoutPageModule)
+  },
+  {
+    path:'**',redirectTo:'main',pathMatch:'full'
   },
 ]

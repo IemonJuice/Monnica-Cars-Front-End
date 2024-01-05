@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {MainPageComponent} from "./main-page.component";
 import {RouterModule} from "@angular/router";
 import {routes} from "./main-page.routes";
+import {FeaturesModule} from "../../../features/features.module";
 
 
 
@@ -10,6 +11,7 @@ import {routes} from "./main-page.routes";
   declarations: [MainPageComponent],
   imports: [
     CommonModule,
+    FeaturesModule,
     RouterModule.forChild(routes)
   ],
   exports:[MainPageComponent,RouterModule]

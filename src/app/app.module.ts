@@ -1,7 +1,7 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import {CoreModule} from "./core/core.module";
 import { StoreModule } from '@ngrx/store';
@@ -14,7 +14,7 @@ import {FeaturesModule} from "./features/features.module";
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+
     CoreModule,
     FeaturesModule,
     StoreModule.forRoot({}, {}),

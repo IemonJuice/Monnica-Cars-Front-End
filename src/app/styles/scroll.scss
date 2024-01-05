@@ -1,0 +1,20 @@
+::-webkit-scrollbar{
+ @media (max-width: 768px) {
+   width: 10px;
+ }
+  width: 50px;
+  border: 1px solid white;
+  background-color: black;
+  &:hover{
+    border: 1px solid black;
+  }
+}
+::-webkit-scrollbar-thumb{
+  border: 1px solid white;
+  background-color: black;
+  &:hover{
+    transition-duration: 100ms;
+
+  }
+
+}
