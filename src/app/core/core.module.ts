@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {PagesModule} from "./pages/pages.module";
 import {RouterModule} from "@angular/router";
 import {routes} from "./core.routes";
+import {FeaturesModule} from "../features/features.module";
 
 
 
@@ -10,7 +11,8 @@ import {routes} from "./core.routes";
   imports: [
     CommonModule,
     PagesModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+
   ],
   exports:[RouterModule]
 })
