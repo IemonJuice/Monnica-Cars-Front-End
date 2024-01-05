@@ -7,24 +7,49 @@
 
     <div class="nav__links">
       <ul>
-        <li>Home</li>
-        <li>Catalog</li>
-        <li>Feedback</li>
-        <li><img src="./assets/images/checkout.svg" alt=""></li>
-        <li><img src="./assets/images/profile.svg" alt=""></li>
+        <li routerLink="/main">Home</li>
+        <li routerLink="/catalog">Catalog</li>
+        <li routerLink="/feedback">Feedback</li>
+        <li routerLink="/checkout"><img src="./assets/images/checkout.svg" alt=""></li>
+        <li routerLink="/account"><img src="./assets/images/profile.svg" alt=""></li>
       </ul>
     </div>
 
-    <div class="burger">
+    <div (click)="makeOppositeBurgerContentVisibility()" class="burger">
       <div></div>
       <div></div>
       <div></div>
     </div>
+    <div data-aos="fade-up" *ngIf="isBurgerVisible" class="burger__content">
+
+      <ul class="burger__content">
+
+        <li routerLink="/main">
+          <img src="./assets/images/home.svg" alt="home">Home</li>
+        <li routerLink="/catalog">
+          <img src="./assets/images/catalog.svg" alt="catalog">Catalog</li>
+        <li routerLink="/feedback">
+          <img src="./assets/images/feedback.svg" alt="feedback">Feedback</li>
+        <li routerLink="/checkout">
+          <img src="./assets/images/checkout.svg" alt="checkout">Checkout</li>
+        <li routerLink="/account">
+          <img src="./assets/images/profile.svg" alt="profile">Profile</li>
+
+        <div class="burger__content_exit exit">
+
+          <img width="150" src="./assets/images/logo.png" alt="">
+
+          <div (click)="makeOppositeBurgerContentVisibility()" class="exit__button">
+
+            <img width="40" src="./assets/images/cancel.svg" alt="">
+          </div>
+
+        </div>
+
+      </ul>
+
+    </div>
 
   </div>
-
-
-
-
 
 </nav>

@@ -1,14 +1,19 @@
 <div class="hero">
- <div class="hero__wrapper">
-   <video class="hero__video" [autoplay]="true" [muted]="true"  [loop]="true">
-     <source src="assets/videos/hero.mp4">
-   </video>
- </div>
-  <div class="hero__line">
-    <div><img src="./assets/images/corvete.png" alt=""></div>
-    <div><img src="./assets/images/dodge.png" alt=""></div>
-    <div><img src="./assets/images/mustang.png" alt=""></div>
-    <div><img src="./assets/images/srt.png" alt=""></div>
-    <div><img src="./assets/images/ford.png" alt=""></div>
+  <div class="hero__wrapper">
+    <video #videoRef preload="auto" playsinline class="hero__video" [autoplay]="true" [muted]="true" [loop]="true" >
+      <source src="assets/videos/hero.mp4">
+    </video>
+    <div class="hero__centred">
+      the art of cars in your hearts
+      <div class="hero__centred_button">explore</div>
+    </div>
   </div>
+</div>
+
+<div class="hero__line">
+  <div><img src="./assets/images/corvete.png" alt="corvette"></div>
+  <div><img src="./assets/images/dodge.png" alt="dodge"></div>
+  <div><img src="./assets/images/mustang.png" alt="mustang"></div>
+  <div><img src="./assets/images/srt.png" alt="srt"></div>
+  <div><img src="./assets/images/ford.png" alt="ford"></div>
 </div>

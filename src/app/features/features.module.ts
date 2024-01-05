@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {NavbarModule} from "./navbar/navbar.module";
 import {HeroModule} from "./hero/hero.module";
+import {TrendingModule} from "./trending/trending.module";
 
 
 
@@ -10,8 +11,9 @@ import {HeroModule} from "./hero/hero.module";
   imports: [
     CommonModule,
     NavbarModule,
-    HeroModule
+    HeroModule,
+    TrendingModule
   ],
-  exports:[NavbarModule,HeroModule]
+  exports:[NavbarModule,HeroModule,TrendingModule]
 })
 export class FeaturesModule { }

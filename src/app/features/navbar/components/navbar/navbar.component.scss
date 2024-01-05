@@ -1,3 +1,4 @@
+
 .nav {
   display: flex;
   justify-content: center;
@@ -53,21 +54,74 @@
     &__links {
       display: none;
     }
-    .burger{
+    .burger {
       display: flex;
+
+      &__content {
+        display: flex;
+      }
     }
   }
 }
-.burger{
+
+.burger {
   display: none;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap:10px;
-  & > div{
+  gap: 10px;
+
+  & > div {
     width: 40px;
     height: 1px;
     background-color: white;
+  }
+
+  &__content {
+    z-index: 10;
+    color: white;
+    top: 0;
+    left: 0;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+
+    flex-direction: column;
+    display: none;
+
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &_exit {
+      display: flex;
+      flex-direction: column;
+
+      position: fixed;
+      bottom: 10px;
+
+      text-align: center;
+      color: white;
+      font-size: 3em;
+    }
+    .exit{
+      &__button{
+        position: fixed;
+        top:20px;
+        right: 20px;
+      }
+    }
   }
 }
 
