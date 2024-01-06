@@ -13,11 +13,11 @@
 
   &__line {
     padding: 10px 0px;
-
+    height: 150px;
     background-color: black;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     gap: 20px;
 
