@@ -8,39 +8,43 @@
     min-height: 100vh;
     overflow: hidden;
     display: flex;
-    background: rgb(77,47,47);
-    background: -moz-linear-gradient(58deg, rgba(77,47,47,1) 0%, rgba(0,0,0,1) 45%, rgba(96,79,47,1) 100%);
-    background: -webkit-linear-gradient(58deg, rgba(77,47,47,1) 0%, rgba(0,0,0,1) 45%, rgba(96,79,47,1) 100%);
-    background: linear-gradient(58deg, rgba(77,47,47,1) 0%, rgba(0,0,0,1) 45%, rgba(96,79,47,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4d2f2f",endColorstr="#604f2f",GradientType=1);align-items: center;
-    &_video{
+    background-color: black;
+
+    &_video {
+      background-color: black;
       width: 50%;
       min-height: 100vh;
-      video{
+
+      video {
         width: auto;
         min-height: 100vh;
         object-fit: cover;
       }
     }
-    &_description{
+
+    &_description {
       width: 50%;
       background-color: black;
       min-height: 100vh;
     }
-    @media(max-width: 968px){
+
+    @media(max-width: 968px) {
       & {
         width: 100%;
         flex-direction: column;
-        &_video{
+
+        &_video {
           width: 100%;
           min-height: 100vh;
-          video{
+
+          video {
             width: auto;
             min-height: 100vh;
             object-fit: cover;
           }
         }
-        &_description{
+
+        &_description {
           width: 100%;
           background-color: black;
           min-height: 100vh;
@@ -50,24 +54,19 @@
   }
 
   &__list {
-    width: 90%;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    height:100%;
-    gap: 50px;
-    margin: 0 auto;
-    padding: 10px;
+    height: 100vh;
+    gap: 0;
 
     &_item {
-      background: rgb(0,0,0);
-      background: -moz-radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(96,79,47,1) 45%, rgba(77,47,47,1) 100%);
-      background: -webkit-radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(96,79,47,1) 45%, rgba(77,47,47,1) 100%);
-      background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(96,79,47,1) 45%, rgba(77,47,47,1) 100%);
-      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#4d2f2f",GradientType=1); overflow: hidden;
+      object-fit: cover;
+      background-repeat: no-repeat;
+
       text-align: center;
-      margin-top: 10px;
-      width: 400px;
-      height: 710px;
+      width: 100%;
+      height: 100%;
       display: flex;
       font-family: "Arial Black";
       justify-content: center;
@@ -75,29 +74,18 @@
       align-items: center;
       outline: 1px solid #424242;
       transition-duration: 200ms;
+      overflow: hidden;
 
       &:hover {
-        background-color: rgba(91, 91, 91, 0.07);
         overflow: hidden;
         transition-duration: 200ms;
-        color: #a15a5a;
+        color: #ffffff;
+        cursor: pointer;
 
-        img {
-          transition-duration: 200ms;
-          scale: 1.4;
-        }
-
-        outline: 1px solid #710000;
-
-      }
-
-      img {
-        transition-duration: 200ms;
-        height: 260px;
       }
 
       h2 {
-        font-size: 2em;
+        font-size: 3em;
         font-weight: bolder;
       }
     }
@@ -129,7 +117,8 @@
       }
     }
   }
-  &__separator{
+
+  &__separator {
     font-size: 2em;
     text-transform: uppercase;
     display: flex;
@@ -139,6 +128,16 @@
     text-align: center;
     font-family: "Arial Black", serif;
     background-color: black;
+
+    p {
+      background: rgb(66, 0, 0);
+      background: -moz-linear-gradient(270deg, rgba(66, 0, 0, 1) 0%, rgba(46, 45, 116, 1) 50%, rgba(125, 88, 0, 1) 100%);
+      background: -webkit-linear-gradient(270deg, rgba(66, 0, 0, 1) 0%, rgba(46, 45, 116, 1) 50%, rgba(125, 88, 0, 1) 100%);
+      background: linear-gradient(270deg, rgba(66, 0, 0, 1) 0%, rgba(46, 45, 116, 1) 50%, rgba(125, 88, 0, 1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#420000", endColorstr="#7d5800", GradientType=1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
   }
 }
 
@@ -159,40 +158,46 @@
   }
 }
 
-.description{
+.description {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  &__heading{
+
+  &__heading {
     margin-top: 150px;
     text-align: center;
     font-size: 2em;
   }
-  &__content{
+
+  &__content {
     padding: 10px;
     text-align: left;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap:10px;
+    gap: 10px;
     font-size: 0.8em;
-    p:nth-child(1){
+
+    p:nth-child(1) {
       text-align: right;
       max-width: 30%;
     }
-    p:nth-child(2){
+
+    p:nth-child(2) {
       text-align: center;
       max-width: 30%;
     }
-    p:nth-child(3){
+
+    p:nth-child(3) {
       text-align: left;
       max-width: 30%;
     }
   }
-  &__buttons{
+
+  &__buttons {
 
     padding: 10px;
     display: flex;
@@ -200,7 +205,8 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    &_button{
+
+    &_button {
       font-size: 0.8em;
       width: 35%;
       display: flex;
@@ -209,13 +215,38 @@
       padding: 10px;
       outline: 1px solid white;
       transition-duration: 300ms;
-      &:hover{
+
+      &:hover {
         transition-duration: 300ms;
         background-color: white;
         color: black;
-        cursor:pointer;
+        cursor: pointer;
       }
     }
   }
+}
+
+.list_item1 {
+  background-image: url("../../../../../assets/images/camarobackground.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.list_item2 {
+  background-image: url("../../../../../assets/images/corvettebackground.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.list_item3 {
+  background-image: url("../../../../../assets/images/dodgebackground.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.list_item4 {
+  background-image: url("../../../../../assets/images/mustangbackground.jpg");
+  background-size: cover;
+  background-position: center;
 
 }

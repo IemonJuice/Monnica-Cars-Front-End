@@ -1,0 +1,16 @@
+.footer{
+  width: 100%;
+  height: 200px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__copyright {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    font-size: 1.4em;
+  }
+}

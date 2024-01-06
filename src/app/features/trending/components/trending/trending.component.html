@@ -17,37 +17,33 @@
   <!-- daisy ui diff -->
 
   <div class="trending__separator">
-    Our bestsellers
+    <p>Our bestsellers</p>
   </div>
 
   <div class="trending__screen">
     <div class="trending__list">
-      <div data-aos-delay="200" data-aos="fade-up" class="trending__list_item">
-        <img loading="lazy" src="./assets/images/models/chevy.png" alt="">
+      <div data-aos-delay="200" data-aos="fade-up" class="trending__list_item list_item1">
         <h2>Chevrolet camaro</h2>
       </div>
-      <div data-aos-delay="500" data-aos="fade-up" class="trending__list_item">
-        <img loading="lazy" src="./assets/images/models/corvette.png" alt="">
+      <div data-aos-delay="500" data-aos="fade-up" class="trending__list_item list_item2">
         <h2>Chevrolet corvette</h2>
       </div>
-      <div data-aos-delay="700" data-aos="fade-up" class="trending__list_item">
-        <img loading="lazy" src="./assets/images/models/dodge.png" alt="">
+      <div data-aos-delay="700" data-aos="fade-up" class="trending__list_item list_item3">
         <h2>Dodge Challenger</h2>
       </div>
-      <div data-aos-delay="1000" data-aos="fade-up" class="trending__list_item">
-        <img loading="lazy" src="./assets/images/models/mustang.png" alt="">
+      <div data-aos-delay="1000" data-aos="fade-up" class="trending__list_item list_item4">
         <h2>Ford mustang</h2>
       </div>
     </div>
   </div>
 
   <div class="trending__separator">
-    Our bestsellers
+    <p>Our Philosophy</p>
   </div>
 
   <div class="trending__screen">
     <div class="trending__screen_video">
-      <video [autoplay]="true" [loop]="true" [muted]="true" src="./assets/videos/trending-mustang.mp4">
+      <video data-aos="fade-right" data-aos-duration="3000" [autoplay]="true" [loop]="true" [muted]="true" src="./assets/videos/trending-mustang.mp4">
 
       </video>
     </div>
@@ -75,6 +71,36 @@
           </p>
 
         </div>
+
+        <div class="description__buttons">
+          <div data-aos="zoom-up" data-aos-delay="1500" class="description__buttons_button">Edit the car</div>
+          <div data-aos="zoom-up" data-aos-delay="1600" class="description__buttons_button">Choose your car</div>
+          <div data-aos="zoom-up" data-aos-delay="1700" class="description__buttons_button">Buy the car</div>
+        </div>
+
+        <div data-aos-delay="2000" data-aos="zoom-down" class="description__logo">
+          <img width="100" src="./assets/images/mustang.png" alt="">
+        </div>
+
+        <div class="description__content">
+
+          <p data-aos="zoom-up" data-aos-delay="500">Embark on a journey where the alchemy of machinery meets the poetry
+            of motion. In the realm of automotive
+            prowess, the engine emerges its components conducting a symphony of power and finesse
+          </p>
+
+          <p data-aos="zoom-up" data-aos-delay="1000">
+            As the throttle engages, the engine becomes a virtuoso, conducting a harmonious ballet of pistons and gears.
+            In this automotive opus, oil emerges as the conductor's wand, seamlessly blending power
+          </p>
+
+          <p data-aos="zoom-up" data-aos-delay="1500">
+            Embark on a journey where the alchemy of machinery meets the poetry of motion. In the realm of automotive
+            prowess, the engine emerges its components conducting a symphony of power and finesse
+          </p>
+
+        </div>
+
         <div class="description__buttons">
           <div data-aos="zoom-up" data-aos-delay="1500" class="description__buttons_button">Edit the car</div>
           <div data-aos="zoom-up" data-aos-delay="1600" class="description__buttons_button">Choose your car</div>
@@ -83,9 +109,5 @@
 
       </div>
     </div>
-  </div>
-
-  <div class="trending__separator">
-    Our bestsellers
   </div>
 </main>
