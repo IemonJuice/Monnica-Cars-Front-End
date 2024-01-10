@@ -5,6 +5,7 @@ import {MainPageModule} from "./main-page/main-page.module";
 import {CatalogPageModule} from "./catalog-page/catalog-page.module";
 import {CheckoutPageModule} from "./checkout-page/checkout-page.module";
 import {CarPageModule} from "./car-page/car-page.module";
+import {AuthModule} from "./auth/auth.module";
 
 
 
@@ -16,7 +17,8 @@ import {CarPageModule} from "./car-page/car-page.module";
     MainPageModule,
     CatalogPageModule,
     CheckoutPageModule,
-    CarPageModule
+    CarPageModule,
+    AuthModule
   ]
 })
 export class PagesModule { }

@@ -14,6 +14,9 @@ export const routes:Routes = [
     path:'checkout', loadChildren: () => import('./pages/checkout-page/checkout-page.module').then(m => m.CheckoutPageModule)
   },
   {
+    path:'auth', loadChildren: () => import('./pages/auth/auth.module').then(m => m.AuthModule)
+  },
+  {
     path:'**',redirectTo:'main',pathMatch:'full'
   },
 ]

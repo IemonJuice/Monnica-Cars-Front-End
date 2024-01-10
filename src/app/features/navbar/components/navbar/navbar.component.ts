@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import { Component, inject } from '@angular/core'
+import { CookieService } from 'ngx-cookie-service'
 
 @Component({
   selector: 'app-navbar',
@@ -7,8 +8,23 @@ import {Component} from '@angular/core';
 })
 export class NavbarComponent {
   isBurgerVisible: boolean = false
+  isTokenAvailable: boolean;
+  cookieService:CookieService = inject(CookieService);
+  constructor() {
+    if(this.cookieService.get('token').length < 1){
+      this.isTokenAvailable = false;
+      return
+    }
+    this.isTokenAvailable = true;
+    console.log(this.cookieService.get('token'))
+  }
 
   makeOppositeBurgerContentVisibility() {
     this.isBurgerVisible = !this.isBurgerVisible;
+  }
+
+  logout() {
+    this.cookieService.delete('token');
+    console.log(this.cookieService.get('token'))
   }
 }

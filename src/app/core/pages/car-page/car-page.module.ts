@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import {CarPageComponent} from "./car-page.component";
 import {RouterModule} from "@angular/router";
 import {routes} from "./car-page.routes";
+import {FeaturesModule} from "../../../features/features.module";
+import { CarDescriptionModule } from '../../../features/car-description/car-description.module'
+
 
 
 
@@ -10,7 +13,10 @@ import {routes} from "./car-page.routes";
   declarations: [CarPageComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    FeaturesModule,
+    CarDescriptionModule
+
   ],
   exports:[CarPageComponent,RouterModule]
 })

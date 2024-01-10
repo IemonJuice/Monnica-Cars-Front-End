@@ -1,0 +1,60 @@
+<div class='login'>
+  <form [formGroup]='form' class='form'>
+    <span class='text-3xl uppercase'>Login</span>
+
+    <div class='flex gap-5'>
+      <input placeholder='Enter username' minlength='8' maxlength='30' formControlName='username' type='text'>
+      <button *ngIf='isHintVisible' (click)='usernameHintModal.showModal()'>hint</button>
+    </div>
+
+
+    <div class='flex gap-5'>
+      <input placeholder='Enter password' minlength='8' maxlength='30' formControlName='password' type='password'>
+      <button *ngIf='isHintVisible' (click)='passwordHintModal.showModal()'>hint</button>
+    </div>
+
+
+    <progress data-aos='zoom-up' *ngIf='form.get("password")?.untouched && form.get("password")?.invalid'
+              class='progress  left-0' value='0' max='100'></progress>
+    <progress data-aos='zoom-up' *ngIf='form.get("password")?.touched && form.get("password")?.invalid'
+              class='progress left-0  progress-error' value='100' max='100'></progress>
+    <progress data-aos='zoom-up' *ngIf='form.get("password")?.valid' class='progress left-0 progress-success' value='100'
+              max='100'></progress>
+
+    <div class='form__buttons'>
+      <button (click)='login()' class='form__buttons_login'> Login</button>
+      <button class='form__buttons_register' routerLink='/auth/register'>create account</button>
+    </div>
+
+
+  </form>
+  <div class='json'>
+
+  <pre>
+    user: {{form.getRawValue() | json}}
+  </pre>
+
+  </div>
+
+</div>
+
+
+<dialog #passwordHintModal class='modal'>
+  <div class='modal-box bg-white text-black'>
+    <form method='dialog'>
+      <button class='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>✕</button>
+    </form>
+    <h3 class='font-bold text-lg'>Password</h3>
+    <p class='py-4'>Password must have at least 8 characters</p>
+  </div>
+</dialog>
+
+<dialog #usernameHintModal class='modal'>
+  <div class='modal-box bg-white text-black'>
+    <form method='dialog'>
+      <button class='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>✕</button>
+    </form>
+    <h3 class='font-bold text-lg'>Username</h3>
+    <p class='py-4'>Username must have at least 8 characters</p>
+  </div>
+</dialog>

@@ -4,6 +4,10 @@ import {NavbarModule} from "./navbar/navbar.module";
 import {HeroModule} from "./hero/hero.module";
 import {TrendingModule} from "./trending/trending.module";
 import { FooterComponent } from './footer/components/footer/footer.component';
+import {CatalogModule} from "./catalog/catalog.module";
+import {CarDescriptionModule} from "./car-description/car-description.module";
+import {AuthModule} from "./auth/auth.module";
+import { ProfileModule } from './profile/profile.module'
 
 
 
@@ -14,9 +18,13 @@ import { FooterComponent } from './footer/components/footer/footer.component';
   imports: [
     CommonModule,
     NavbarModule,
+    CatalogModule,
     HeroModule,
-    TrendingModule
+    TrendingModule,
+    CarDescriptionModule,
+    AuthModule,
+    ProfileModule
   ],
-    exports: [NavbarModule, HeroModule, TrendingModule, FooterComponent]
+    exports: [NavbarModule, HeroModule, TrendingModule, FooterComponent,CatalogModule,AuthModule,ProfileModule]
 })
 export class FeaturesModule { }

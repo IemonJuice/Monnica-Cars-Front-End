@@ -1,1 +1,44 @@
-<p>catalog works!</p>
+<div class="catalog">
+  <form [formGroup]="carForm" class="catalog__nav-panel">
+
+    <select formControlName="order"  (change)="getSortedByPriceCars()"  class="catalog__select">
+      <option  disabled selected>Price</option>
+      <option value="ASC" class="catalog__select_option">ASC</option>
+      <option value="DESC"  class="catalog__select_option">DSC</option>
+    </select>
+
+    <select formControlName="rating"  (change)="getFilteredByRatingCars()"  class="catalog__select">
+      <option disabled selected>Rating</option>
+      <option value="5" class="catalog__select_option">&#9734; &#9734; &#9734; &#9734; &#9734;</option>
+      <option value="4" class="catalog__select_option">&#9734; &#9734; &#9734; &#9734;</option>
+      <option value="3" class="catalog__select_option">&#9734; &#9734; &#9734;</option>
+      <option value="2" class="catalog__select_option">&#9734; &#9734;</option>
+      <option value="1" class="catalog__select_option">&#9734;</option>
+    </select>
+
+    <button  (click)="previousPage()" class="catalog__pagination_button">
+      prev
+    </button>
+    <div class="catalog__current-page">
+      {{currentPage}}
+    </div>
+    <button  (click)="nextPage()" class="catalog__pagination_button">
+      next
+    </button>
+
+    <input #searchingInput  (input)='getSpecificCars(searchingInput.value)'  class="catalog__search" placeholder="search" type="search">
+  </form>
+
+  <div class="catalog__view">
+    <ng-container *ngFor="let car of ((cars$ | async)?.data!['getCars'])">
+
+      <app-catalog-item *ngIf='car' data-aos="zoom-up" data-aos-duration="1000"  [car]="car">
+
+      </app-catalog-item>
+
+    </ng-container >
+
+
+  </div>
+</div>
+

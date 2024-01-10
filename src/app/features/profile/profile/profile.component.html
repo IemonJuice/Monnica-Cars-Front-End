@@ -1,0 +1,23 @@
+<div class='profile' *ngIf='(profile | async) as profile'>
+  <div class='profile__image'>
+    <div class='profile__image_avatar'>
+
+    </div>
+   Welcome back! {{profile?.data?.profile?.username}}
+  </div>
+
+  <div class='profile__description'>
+    <label>gender</label>
+    <input value='{{profile?.data?.profile?.gender}}' [disabled]='!isEditingMode'>
+    <label>email</label>
+    <input value='{{profile?.data?.profile?.email}}' [disabled]='!isEditingMode'>
+    <label>age</label>
+    <input value='{{profile?.data?.profile?.age}}' [disabled]='!isEditingMode'>
+    <div class='profile__description_buttons'>
+      <button *ngIf='!isEditingMode' (click)='changeEditingModeToOpposite()'>change</button>
+      <div *ngIf='isEditingMode'>
+        <button>save</button>
+      </div>
+    </div>
+  </div>
+</div>

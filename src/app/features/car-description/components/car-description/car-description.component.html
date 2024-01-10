@@ -1,0 +1,38 @@
+<div *ngIf="(carDetails | async)?.data?.getCar as car">
+  <div class="car">
+    <div class="car__image">
+      <div data-aos="zoom-up" data-aos-duration="3000"></div>
+      <div data-aos="zoom-up" data-aos-duration="3000"></div>
+      <div data-aos="zoom-up" data-aos-duration="400">
+        <img [src]="car['imagesUrl']![0]['imageUrl']" alt="">
+      </div>
+    </div>
+    <div class="car__statistics">
+      <div  class="car__statistics_model">
+        <span data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">{{car.model}}</span>
+      </div>
+      <div class="car__statistics_hp">
+        Horse Powers: <span class="text-black">{{car.HP}}</span>
+      </div>
+      <div  class="car__statistics_rating">
+        Rating: <div class="text-black inline-block" >
+        <span *ngIf="car.rating===1">&#9733;</span>
+        <span *ngIf="car.rating===2">&#9733; &#9733;</span>
+        <span *ngIf="car.rating===3">&#9733; &#9733; &#9733;</span>
+        <span *ngIf="car.rating===4">&#9733; &#9733; &#9733; &#9733;</span>
+        <span *ngIf="car.rating===5">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
+        </div>
+      </div>
+      <div  class="car__statistics_release-date">
+        Date:{{car.releaseDate}}
+      </div>
+      <div class="car__statistics_price">
+        Price: <span class="text-black font-bold">{{car.price | currency}}</span>
+      </div>
+      <div class="car__statistics_buttons">
+        <button data-aos="fade-up">Buy</button>
+        <button>Like</button>
+      </div>
+    </div>
+  </div>
+</div>

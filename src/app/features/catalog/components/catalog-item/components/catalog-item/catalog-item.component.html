@@ -1,0 +1,56 @@
+<div (click)="moveToFullDescriptionPage()" class="car">
+
+  <div class="car__image">
+    <img loading="lazy" [src]="car!.imagesUrl![0].imageUrl" alt="">
+  </div>
+
+
+  <div class="car__statistics">
+
+    <span class="car__hp">
+      <span class="font-bold">HP:</span> {{car.HP}}
+    </span>
+
+    <span class="car__model">
+     <span class="font-bold">Model:</span> {{car.model}}
+    </span>
+
+    <span class="car__rating">
+     <span class="font-bold">Rating:</span>
+
+      <span *ngIf="car.rating===1">
+        &starf;
+      </span>
+
+      <span *ngIf="car.rating===2">
+        &starf;
+        &starf;
+      </span>
+
+      <span *ngIf="car.rating===3">
+        &starf;
+        &starf;
+        &starf;
+      </span>
+
+      <span *ngIf="car.rating===4">
+        &starf;
+        &starf;
+        &starf;
+        &starf;
+      </span>
+
+      <span *ngIf="car.rating===5">
+        &starf;
+        &starf;
+        &starf;
+        &starf;
+        &starf;
+      </span>
+  </span>
+    <span>
+         <span class="font-bold">Price:</span> {{car.price | currency}}
+    </span>
+
+  </div>
+</div>

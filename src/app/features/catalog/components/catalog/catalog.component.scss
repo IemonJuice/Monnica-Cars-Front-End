@@ -1,0 +1,94 @@
+.catalog {
+  width: 100%;
+  min-height: 90vh;
+  background-color: white;
+  padding-bottom: 10px;
+  &__nav-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto;
+    height: 100px;
+    width: 80%;
+    border-bottom: 1px solid grey;
+  }
+
+  &__select {
+    width: 100px;
+    height: 40px;
+    outline: 1px solid black;
+    background-color: white;
+    transition-duration: 200ms;
+    text-align: center;
+
+    &:hover {
+      transition-duration: 200ms;
+      outline: 1px solid white;
+      background-color: black;
+    }
+
+  }
+
+  &__pagination {
+    &_button {
+      width: 100px;
+      height: 40px;
+      background-color: black;
+      color: white;
+    }
+  }
+
+  &__search {
+    padding-left: 30px;
+    width: 200px;
+    height: 40px;
+    background-color: white;
+    outline: 1px solid black;
+    background-image: url("../../../../../assets/images/search.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-position-x: 5px;
+
+    &__catalog__view {
+      width: 100%;
+      height: 100%;
+
+    }
+  }
+  &__view{
+    padding-top: 10px;
+    max-width: 90%;
+    margin: 0 auto;
+    display: grid;
+
+
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 50px;
+    row-gap:50px;
+    @media(max-width: 1024px) {
+      &{
+        grid-template-columns: 1fr 1fr;
+        row-gap:10px;
+      }
+    }
+    @media(max-width: 768px) {
+      &{
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+  &__current-page{
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+  }
+}

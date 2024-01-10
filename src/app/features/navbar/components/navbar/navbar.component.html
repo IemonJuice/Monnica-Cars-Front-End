@@ -1,47 +1,101 @@
-<nav class="nav">
-  <div class="container">
+<nav class='nav'>
+  <div class='container'>
 
-    <div class="nav__logo">
-      <img src="./assets/images/logo.png" alt="">
+    <div class='nav__logo'>
+      <img src='./assets/images/logo.png' alt=''>
     </div>
 
-    <div class="nav__links">
+    <div class='nav__links'>
       <ul>
-        <li routerLink="/main">Home</li>
-        <li routerLink="/catalog">Catalog</li>
-        <li routerLink="/feedback">Feedback</li>
-        <li routerLink="/checkout"><img src="./assets/images/checkout.svg" alt=""></li>
-        <li routerLink="/account"><img src="./assets/images/profile.svg" alt=""></li>
+
+        <li routerLink='/main'>
+          <img src='./assets/images/home.svg' alt='home'>Home
+        </li>
+
+        <li routerLink='/catalog'>
+          <img src='./assets/images/catalog.svg' alt='catalog'>Catalog
+        </li>
+
+        <li routerLink='/feedback'>
+          <img src='./assets/images/feedback.svg' alt='feedback'>Feedback
+        </li>
+
+        <li *ngIf='!isTokenAvailable' routerLink='/auth/login'>
+          <img src='./assets/images/login.svg' alt=''>
+          Sign in
+        </li>
+
+        <li *ngIf='!isTokenAvailable' routerLink='/auth/register'>
+          <img src='./assets/images/register.svg' alt=''>
+          Sign up
+        </li>
+        <li *ngIf='isTokenAvailable' (click)='logout()'>
+          <img src='./assets/images/logout.svg' alt=''>
+          Logout
+        </li>
+
+        <li routerLink='/checkout'><img src='./assets/images/checkout.svg' alt=''>
+
+        </li>
+
+        <li *ngIf='isTokenAvailable' routerLink='/account'><img src='./assets/images/profile.svg' alt=''>
+
+        </li>
+
       </ul>
     </div>
 
-    <div (click)="makeOppositeBurgerContentVisibility()" class="burger">
+    <div (click)='makeOppositeBurgerContentVisibility()' class='burger'>
       <div></div>
       <div></div>
       <div></div>
     </div>
-    <div data-aos="fade-up" *ngIf="isBurgerVisible" class="burger__content">
+    <div data-aos='fade-up' *ngIf='isBurgerVisible' class='burger__content'>
 
-      <ul class="burger__content">
+      <ul class='burger__content'>
 
-        <li routerLink="/main">
-          <img src="./assets/images/home.svg" alt="home">Home</li>
-        <li routerLink="/catalog">
-          <img src="./assets/images/catalog.svg" alt="catalog">Catalog</li>
-        <li routerLink="/feedback">
-          <img src="./assets/images/feedback.svg" alt="feedback">Feedback</li>
-        <li routerLink="/checkout">
-          <img src="./assets/images/checkout.svg" alt="checkout">Checkout</li>
-        <li routerLink="/account">
-          <img src="./assets/images/profile.svg" alt="profile">Profile</li>
+        <li routerLink='/main'>
+          <img src='./assets/images/home.svg' alt='home'>Home
+        </li>
 
-        <div class="burger__content_exit exit">
+        <li routerLink='/catalog'>
+          <img src='./assets/images/catalog.svg' alt='catalog'>Catalog
+        </li>
 
-          <img width="150" src="./assets/images/logo.png" alt="">
+        <li routerLink='/feedback'>
+          <img src='./assets/images/feedback.svg' alt='feedback'>Feedback
+        </li>
 
-          <div (click)="makeOppositeBurgerContentVisibility()" class="exit__button">
+        <li routerLink='/checkout'>
+          <img src='./assets/images/checkout.svg' alt='checkout'>Checkout
+        </li>
 
-            <img width="40" src="./assets/images/cancel.svg" alt="">
+        <li routerLink='/account'>
+          <img src='./assets/images/profile.svg' alt='profile'>Profile
+        </li>
+
+        <li  *ngIf='!isTokenAvailable' routerLink='/auth/login'>
+          <img src='./assets/images/login.svg' alt=''>
+          Login
+        </li>
+
+        <li *ngIf='!isTokenAvailable' routerLink='/auth/register'>
+          <img src='./assets/images/register.svg' alt=''>
+          Register
+        </li>
+
+        <li *ngIf='isTokenAvailable' routerLink='/auth/register'>
+          <img src='./assets/images/logout.svg' alt=''>
+          Logout
+        </li>
+
+        <div class='burger__content_exit exit'>
+
+          <img width='150' src='./assets/images/logo.png' alt=''>
+
+          <div (click)='makeOppositeBurgerContentVisibility()' class='exit__button'>
+
+            <img width='40' src='./assets/images/cancel.svg' alt=''>
           </div>
 
         </div>

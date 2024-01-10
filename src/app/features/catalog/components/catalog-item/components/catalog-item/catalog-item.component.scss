@@ -1,0 +1,48 @@
+.car {
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 300px;
+  outline: 1px solid #c0c0c0;
+  box-shadow: -1px 1px 3px #b3b3b3;
+  img {
+    transition-duration: 200ms;
+  }
+  &__statistics{
+    text-align: center;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+    top:0;
+    left:0;
+    width: 0%;
+    height: 100%;
+    background-color: black;
+    transition-duration: 200ms;
+    z-index: 10;
+
+    font-size: 0em;
+  }
+  &:hover{
+    cursor: pointer;
+    img{
+      transition-duration: 200ms;
+      scale:1.1;
+    }
+    .car__statistics{
+      font-size: 1em;
+      width: 40%;
+    }
+  }
+  &__image {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
