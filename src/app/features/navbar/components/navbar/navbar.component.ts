@@ -12,25 +12,25 @@ import { Router } from '@angular/router'
 })
 export class NavbarComponent implements OnInit {
   isBurgerVisible: boolean = false
-  isTokenAvailable!: boolean
-  token: string = inject(CookieService).get('token')
+  isTokenAvailable!: boolean;
   store: Store<{ user: StateModel }> = inject(Store<{ user: StateModel }>)
   router: Router = inject(Router)
 
   constructor(private cookieService: CookieService) {
+
   }
 
-  ngOnInit() {
-
-    if (this.token) {
-      this.store.dispatch(isUserAuthenticatedAction({ isAuthenticated: true }))
-    } else {
-      this.store.dispatch(isUserAuthenticatedAction({ isAuthenticated: false }))
-    }
-
+   ngOnInit() {
+     console.log(
+       this.cookieService.get('token')
+     )
+    const token = this.cookieService.get('token')
     this.store.select('user').subscribe(user => {
       this.isTokenAvailable = user.isUserLoggedIn
     })
+    if (token) {
+      this.store.dispatch(isUserAuthenticatedAction({ isAuthenticated: true }))
+    }
   }
 
   makeOppositeBurgerContentVisibility() {

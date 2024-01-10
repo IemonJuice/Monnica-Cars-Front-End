@@ -46,11 +46,10 @@ export class LoginComponent {
           dialog.showModal();
 
           this.hasServerError = false
-          this.cookieService.set('token', response.data.login.token)
-
           let interval = setInterval(() => {
             this.countToRedirect--
             if (this.countToRedirect === 0) {
+              this.cookieService.set('token', response.data.login.token,undefined,'/')
               this.store.dispatch(loginAction(response.data.login.token.user))
               clearInterval(interval)
               this.router.navigate(['/account'])
@@ -63,6 +62,5 @@ export class LoginComponent {
           this.serverErrorMessage = err.message
         }
       })
-
   }
 }

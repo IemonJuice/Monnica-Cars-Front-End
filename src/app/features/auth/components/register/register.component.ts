@@ -1,9 +1,9 @@
-import { Component, inject, NgZone, OnDestroy } from '@angular/core'
+import { Component, inject, OnDestroy } from '@angular/core'
 import { AuthService } from '../../services/auth.service'
 import { CookieService } from 'ngx-cookie-service'
 import { Router } from '@angular/router'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { fromEvent, Subscription } from 'rxjs'
+import { Subscription } from 'rxjs'
 
 @Component({
   selector: 'app-register',
@@ -34,7 +34,7 @@ export class RegisterComponent implements OnDestroy {
   }
 
 
-  register(dialog: HTMLDialogElement) {
+  async register(dialog: HTMLDialogElement) {
     if (this.form.invalid) {
       this.isHintVisible = true
       return
@@ -43,15 +43,13 @@ export class RegisterComponent implements OnDestroy {
       next: () => {
         dialog.showModal();
         this.hasServerError = false
-        inject(NgZone).runOutsideAngular(() => {
-          let interval = setInterval(() => {
-            if (this.countToRedirect === 1) {
-              clearInterval(interval)
-              this.router.navigate(['/auth/login'])
-            }
-            this.countToRedirect--
-          }, 1000)
-        })
+        let interval = setInterval(() => {
+          if (this.countToRedirect === 1) {
+            clearInterval(interval)
+            this.router.navigate(['/auth/login'])
+          }
+          this.countToRedirect--
+        }, 1000)
       },
       error: (err) => {
         this.hasServerError = true

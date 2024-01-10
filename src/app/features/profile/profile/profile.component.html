@@ -4,7 +4,7 @@
     <div class='profile__image_avatar'>
       <input type='file' >
     </div>
-   <div class='profile__username'>{{profile?.data?.profile?.username}}</div>
+   <div class='profile__username'>{{profileForm.get('username')?.value}}</div>
   </div>
 
   <form [formGroup]='profileForm' class='profile__description'>
