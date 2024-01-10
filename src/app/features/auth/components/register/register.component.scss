@@ -16,6 +16,15 @@
   gap:25px;
   width: 50%;
   height: 100%;
+  &__error{
+    color: red;
+    position: fixed;
+    top:200px;
+    font-size: 2em;
+    left:0;
+    text-align: center;
+    width: 100%;
+  }
   &__label{
     display: flex;
     justify-content: center;

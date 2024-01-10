@@ -1,3 +1,7 @@
+<span data-aos='zoom-up' class='form__error' *ngIf='hasServerError'>
+    {{serverErrorMessage}}
+  </span>
+
 <div class='register'>
   <form [formGroup]='form' class='form'>
     <span class='text-3xl uppercase'>Register</span>
@@ -44,7 +48,7 @@
               max='100'></progress>
 
     <div class='form__buttons'>
-      <button (click)='login()' class='form__buttons_register'> Register</button>
+      <button (click)='register(redirectModal)' class='form__buttons_register'> Register</button>
       <button class='form__buttons_login' routerLink='/auth/login'> have an account?</button>
     </div>
 
@@ -78,5 +82,16 @@
     </form>
     <h3 class='font-bold text-lg'>Username</h3>
     <p class='py-4'>Username must have at least 8 characters</p>
+  </div>
+</dialog>
+
+<dialog #redirectModal class='modal '>
+  <div class='modal-box flex flex-col justify-center items-center gap-10 bg-white text-black h-96'>
+    <form method='dialog'>
+      <button class='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>✕</button>
+    </form>
+    <h3 class='font-bold text-lg'>Redirect to Login page</h3>
+    <p class='py-4'> {{countToRedirect}}</p>
+    <progress class="progress w-56" value="{{countToRedirect}}" max="3"></progress>
   </div>
 </dialog>

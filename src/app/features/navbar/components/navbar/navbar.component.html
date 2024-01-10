@@ -29,6 +29,7 @@
           <img src='./assets/images/register.svg' alt=''>
           Sign up
         </li>
+
         <li *ngIf='isTokenAvailable' (click)='logout()'>
           <img src='./assets/images/logout.svg' alt=''>
           Logout
@@ -38,8 +39,8 @@
 
         </li>
 
-        <li *ngIf='isTokenAvailable' routerLink='/account'><img src='./assets/images/profile.svg' alt=''>
-
+        <li *ngIf='isTokenAvailable' routerLink='/account'>
+          <img src='./assets/images/profile.svg' alt=''>
         </li>
 
       </ul>
@@ -50,6 +51,7 @@
       <div></div>
       <div></div>
     </div>
+
     <div data-aos='fade-up' *ngIf='isBurgerVisible' class='burger__content'>
 
       <ul class='burger__content'>

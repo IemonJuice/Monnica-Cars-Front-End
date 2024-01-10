@@ -1,7 +1,4 @@
 import { Injectable } from '@angular/core'
-import { Observable } from 'rxjs'
-import { Car } from '../../../core/models/car.model'
-import { getCars } from '../../../core/graphql/queries/cars.query'
 import { Apollo } from 'apollo-angular'
 import { HttpHeaders } from '@angular/common/http'
 import { CookieService } from 'ngx-cookie-service'
@@ -20,7 +17,6 @@ export class AuthService {
   }
 
   private getHeaders(): HttpHeaders {
-
     const token = this.cookieService.get('token')
     return new HttpHeaders({
       'Content-Type': 'application/json',
@@ -29,13 +25,12 @@ export class AuthService {
   }
 
   register(user: UserToRegister) {
-    return this.apollo.watchQuery<any>({
-      query: registerUser(user)
-    }).valueChanges
+    return this.apollo.mutate({
+      mutation: registerUser(user)
+    })
   }
 
   login(user: UserToLogin) {
-
     return this.apollo.watchQuery<any>({
       query: loginUser(user)
     }).valueChanges
@@ -50,5 +45,6 @@ export class AuthService {
     }).valueChanges
   }
 }
+
 
 

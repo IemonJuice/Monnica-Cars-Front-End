@@ -1,23 +1,34 @@
 <div class='profile' *ngIf='(profile | async) as profile'>
   <div class='profile__image'>
+    <div class='profile__username'>Welcome back!</div>
     <div class='profile__image_avatar'>
-
+      <input type='file' >
     </div>
-   Welcome back! {{profile?.data?.profile?.username}}
+   <div class='profile__username'>{{profile?.data?.profile?.username}}</div>
   </div>
 
-  <div class='profile__description'>
+  <form [formGroup]='profileForm' class='profile__description'>
+
     <label>gender</label>
-    <input value='{{profile?.data?.profile?.gender}}' [disabled]='!isEditingMode'>
+    <input formControlName='gender' value='{{profile?.data?.profile?.gender}}' >
+
+
+    <label>username</label>
+    <input formControlName='username'  value='{{profile?.data?.profile?.username}}'>
+
+
     <label>email</label>
-    <input value='{{profile?.data?.profile?.email}}' [disabled]='!isEditingMode'>
+    <input formControlName='email'  type='email' value='{{profile?.data?.profile?.email}}' [disabled]='!isEditingMode'>
+
     <label>age</label>
-    <input value='{{profile?.data?.profile?.age}}' [disabled]='!isEditingMode'>
+    <input formControlName='age'  value='{{profile?.data?.profile?.age}}' [disabled]='!isEditingMode'>
+
     <div class='profile__description_buttons'>
       <button *ngIf='!isEditingMode' (click)='changeEditingModeToOpposite()'>change</button>
+      <button *ngIf='!isEditingMode' (click)='changeEditingModeToOpposite()'>edit password</button>
       <div *ngIf='isEditingMode'>
-        <button>save</button>
+        <button (click)='saveForm()'>save</button>
       </div>
     </div>
-  </div>
+  </form>
 </div>

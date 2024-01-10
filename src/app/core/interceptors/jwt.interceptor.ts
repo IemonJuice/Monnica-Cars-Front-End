@@ -4,7 +4,7 @@ import {inject} from "@angular/core";
 
 export const jwtInterceptor: HttpInterceptorFn = (req, next) => {
   const token:string = inject(CookieService).get('token');
-  if(token){
+  if(token!==''){
     req = req.clone(
       {
         setHeaders: {Authorization: `Bearer ${token}`}

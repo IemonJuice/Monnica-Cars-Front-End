@@ -2,21 +2,41 @@
   width: 100%;
   height: 90vh;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
+  gap:25px;
   align-items: center;
   background-color: white;
+  &__username{
+    width: 150px;
+    text-align: center;
+    border-bottom: #424242 1px solid;
+  }
   &__image{
     display: flex;
     justify-content: center;
     align-items: center;
     gap:10px;
-    flex-direction: column;
     width: 50%;
     &_avatar{
-      height: 200px;
-      width: 200px;
+      position: relative;
+      height: 100px;
+      width: 100px;
       outline: 1px solid black;
       border-radius: 50%;
+      overflow: hidden;
+      input[type='file']{
+        position: absolute;
+        bottom: 0;
+        left:0;
+        width: 100%;
+        opacity: 0;
+        transition-duration: 200ms;
+      }
+      &:hover input[type='file']{
+        opacity: 1;
+        transition-duration: 200ms;
+      }
     }
   }
   &__description{
@@ -26,6 +46,30 @@
     justify-content: center;
     align-items: center;
     gap:10px;
+    &_buttons{
+
+      display: flex;
+      gap:20px;
+      justify-content: space-between;
+      button{
+        padding:10px;
+        background-color: black;
+      }
+    }
+    input{
+      text-align: center;
+      width: 300px;
+      height:40px;
+      background-color: white;
+      outline: 1px solid black;
+      &:disabled{
+        text-align: center;
+        width: 300px;
+        height:40px;
+        background-color: black;
+
+      }
+    }
   }
   @media (max-width: 1024px) {
     &{
@@ -35,6 +79,7 @@
       }
       &__description{
         width: 90%;
+
       }
     }
   }
