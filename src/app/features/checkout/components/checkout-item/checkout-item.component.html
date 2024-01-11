@@ -1,0 +1,6 @@
+<div data-aos='zoom-up' data-aos-duration='2000'  class='basket__content_car'>
+  <img [src]='car?.imagesUrl![0].imageUrl' alt=''>
+  <div>{{car?.price | currency}}</div>
+  <div>quantity </div>
+  <button (click)='removeCarFromTheCheckoutList()'>remove</button>
+</div>

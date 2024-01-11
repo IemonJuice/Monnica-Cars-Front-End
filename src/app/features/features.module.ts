@@ -9,6 +9,7 @@ import { CarDescriptionModule } from './car-description/car-description.module'
 import { AuthModule } from './auth/auth.module'
 import { ProfileModule } from './profile/profile.module'
 import { UsersModule } from './users/users.module'
+import { CheckoutModule } from './checkout/checkout.module'
 
 
 @NgModule({
@@ -24,9 +25,20 @@ import { UsersModule } from './users/users.module'
     CarDescriptionModule,
     AuthModule,
     ProfileModule,
-    UsersModule
+    UsersModule,
+    CheckoutModule
   ],
-  exports: [NavbarModule, HeroModule, TrendingModule, FooterComponent, CatalogModule, AuthModule, ProfileModule, UsersModule]
+  exports: [
+    NavbarModule,
+    HeroModule,
+    TrendingModule,
+    FooterComponent,
+    CatalogModule,
+    AuthModule,
+    ProfileModule,
+    UsersModule,
+    CheckoutModule
+  ]
 })
 export class FeaturesModule {
 }

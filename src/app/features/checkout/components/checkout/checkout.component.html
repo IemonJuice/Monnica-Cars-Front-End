@@ -1,0 +1,22 @@
+<div class='basket'>
+
+ <div class='basket__heading'>
+
+ </div>
+
+  <div class='basket__content'>
+    <div  class='basket__content_list'>
+
+
+      <div class='basket__content_car'>
+        <app-checkout-item *ngFor='let basketItem of (checkout | async)?.data?.profile?.basket' [car]='basketItem'></app-checkout-item>
+      </div>
+
+    </div>
+
+    <div class='basket__content_summary'>
+      <div class='basket__content_total-count'>TOTAL COUNT</div>
+    </div>
+  </div>
+</div>
+<!-- id hp PRICE RELEASEDate imagesurl:[id,imageUrl] -->

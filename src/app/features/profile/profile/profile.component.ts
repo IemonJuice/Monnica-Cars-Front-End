@@ -63,8 +63,6 @@ export class ProfileComponent implements OnInit,OnDestroy {
       this.profileForm.get('email')?.disable();
       this.profileForm.get('gender')?.disable();
       this.profileForm.get('age')?.disable();
-
-
     }
   }
 

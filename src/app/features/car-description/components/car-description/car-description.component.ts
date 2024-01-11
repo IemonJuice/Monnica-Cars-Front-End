@@ -1,8 +1,10 @@
-import {Component, inject, OnInit} from '@angular/core';
-import {ActivatedRoute, Params } from "@angular/router";
-import {Observable } from "rxjs";
-import {Car} from "../../../../core/models/car.model";
-import {CarDescriptionService} from "../../services/car-description.service";
+import { Component, inject, OnInit } from '@angular/core'
+import { ActivatedRoute, Params } from '@angular/router'
+import { combineLatest, Observable, take } from 'rxjs'
+import { Car } from '../../../../core/models/car.model'
+import { CarDescriptionService } from '../../services/car-description.service'
+import { StateModel } from '../../../../store/models/state.model'
+import { Store } from '@ngrx/store'
 
 @Component({
   selector: 'app-car-description',
@@ -10,14 +12,31 @@ import {CarDescriptionService} from "../../services/car-description.service";
   styleUrl: './car-description.component.scss'
 })
 export class CarDescriptionComponent implements OnInit {
-  carDetails!: Observable<{data:{getCar:Partial<Car>}}>
+
+  carDetails!: Observable<{ data: { getCar: Partial<Car> } }>
   carsService: CarDescriptionService = inject(CarDescriptionService)
-  route: ActivatedRoute = inject(ActivatedRoute);
+  route: ActivatedRoute = inject(ActivatedRoute)
+  store: Store<{ user: StateModel }> = inject(Store<{ user: StateModel }>)
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       this.carDetails = this.carsService.getCarById(params['id'])
     })
-    this.carDetails.subscribe(d => console.log(d))
+  }
+
+  addCarToTheCheckout() {
+    combineLatest([
+      this.store.select('user').pipe(take(1)),
+      this.carDetails.pipe(take(1))
+    ]).subscribe(([user, car]) => {
+      const userId = user.user?.id;
+      const carId = car?.data?.getCar?.id;
+
+      if (userId !== undefined && carId !== undefined) {
+        this.carsService.addCarToTheCheckout(userId, carId).subscribe(d => {
+          console.log(d)
+        });
+      }
+    });
   }
 }

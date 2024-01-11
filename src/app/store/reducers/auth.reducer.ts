@@ -1,6 +1,11 @@
 import { createReducer, on } from '@ngrx/store'
 import { initialState } from '../models/default-state.model'
-import { isUserAuthenticatedAction, loginAction, logoutUserAction } from '../actions/auth.actions'
+import {
+  downloadDefaultUserAction,
+  isUserAuthenticatedAction,
+  loginAction,
+  logoutUserAction
+} from '../actions/auth.actions'
 
 export const authReducer = createReducer(initialState,
   on(loginAction, (state,{ user }) => {
@@ -20,6 +25,19 @@ export const authReducer = createReducer(initialState,
     return {
       ...state,
       isUserLoggedIn:false,
+    }
+  }),
+  on(downloadDefaultUserAction, (state,{user}) => {
+
+    return {
+      isUserLoggedIn:true,
+      user:{
+        email:user.email,
+        username:user.username,
+        id:user.id,
+        gender:user.gender,
+        age:user.age
+      }
     }
   })
 )

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {CheckoutPageComponent} from "./checkout-page.component";
 import {RouterModule} from "@angular/router";
 import {routes} from "./checkout-page.routes";
+import { FeaturesModule } from '../../../features/features.module'
 
 
 
@@ -10,7 +11,8 @@ import {routes} from "./checkout-page.routes";
   declarations: [CheckoutPageComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    FeaturesModule
   ],
   exports:[CheckoutPageComponent,RouterModule]
 })

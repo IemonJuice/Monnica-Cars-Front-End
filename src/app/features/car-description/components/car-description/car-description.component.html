@@ -30,7 +30,7 @@
         Price: <span class="text-black font-bold">{{car.price | currency}}</span>
       </div>
       <div class="car__statistics_buttons">
-        <button data-aos="fade-up">Buy</button>
+        <button (click)='addCarToTheCheckout()' data-aos="fade-up">Buy</button>
         <button>Like</button>
       </div>
     </div>

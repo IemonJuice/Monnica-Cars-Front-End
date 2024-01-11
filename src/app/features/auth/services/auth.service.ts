@@ -9,7 +9,6 @@ import { loginUser } from '../../../core/graphql/queries/user-login.query'
 import { getProfile } from '../../../core/graphql/queries/user-profile.query'
 import { Store } from '@ngrx/store'
 import { StateModel } from '../../../store/models/state.model'
-import { isUserAuthenticatedAction } from '../../../store/actions/auth.actions'
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +16,10 @@ import { isUserAuthenticatedAction } from '../../../store/actions/auth.actions'
 export class AuthService {
 
   constructor(private apollo: Apollo, private cookieService: CookieService,private store:Store<{user:StateModel}>) {
-    if(this.cookieService.get('token')){
-      this.store.dispatch(isUserAuthenticatedAction({isAuthenticated:true}))
-    }
+
   }
 
-  private getHeaders(): HttpHeaders {
+   getHeaders(): HttpHeaders {
     const token = this.cookieService.get('token')
     return new HttpHeaders({
       'Content-Type': 'application/json',
