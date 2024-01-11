@@ -1,10 +1,8 @@
 import {NgModule, isDevMode} from '@angular/core';
 import {BrowserModule, provideClientHydration} from '@angular/platform-browser';
-
-
 import {AppComponent} from './app.component';
 import {CoreModule} from "./core/core.module";
-import { provideStore, StoreModule } from '@ngrx/store'
+import {StoreModule } from '@ngrx/store'
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {FeaturesModule} from "./features/features.module";
 import {HttpClientModule, provideHttpClient, withFetch, withInterceptors} from '@angular/common/http';

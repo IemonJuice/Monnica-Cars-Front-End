@@ -14,7 +14,6 @@ import { removeFromTheCheckout } from '../../../core/graphql/mutations/remove-fr
 export class UsersService {
 
 
-
   constructor(private apollo: Apollo, private authService: AuthService) {
   }
 
@@ -27,20 +26,21 @@ export class UsersService {
   getCheckout() {
     return this.apollo.watchQuery({
       query: getCheckout(),
-      fetchPolicy:'no-cache',
+      fetchPolicy: 'no-cache',
       context: {
         headers: this.authService.getHeaders()
       }
     }).valueChanges
   }
-  removeFromTheCheckout(userId:number,carId:number) {
+
+  removeFromTheCheckout(userId: number, carId: number) {
     return this.apollo.mutate({
-      mutation:removeFromTheCheckout(userId,carId),
-      refetchQueries:'all'
+      mutation: removeFromTheCheckout(userId, carId),
+      refetchQueries: 'all'
     })
   }
 
-  resetPassword() {
-    //TODO  create graphql mutation in the back end and here to create reset feature
+  resetPassword(userId: number, oldPassword: string, newPassword: string) {
+    return this.authService.resetPassword(userId, oldPassword, newPassword)
   }
 }

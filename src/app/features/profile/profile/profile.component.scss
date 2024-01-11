@@ -84,3 +84,15 @@
     }
   }
 }
+.reset-password-modal{
+  background-color: black;
+  color: white;
+  input{
+    outline: 1px solid white;
+    background-color: black;
+  }
+  button{
+    background-color: white;
+    color: black;
+  }
+}

@@ -9,15 +9,14 @@ import { loginUser } from '../../../core/graphql/queries/user-login.query'
 import { getProfile } from '../../../core/graphql/queries/user-profile.query'
 import { Store } from '@ngrx/store'
 import { StateModel } from '../../../store/models/state.model'
+import { resetPassword } from '../../../core/graphql/mutations/reset-password.mutation'
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private apollo: Apollo, private cookieService: CookieService,private store:Store<{user:StateModel}>) {
-
-  }
+  constructor(private apollo: Apollo, private cookieService: CookieService,private store:Store<{user:StateModel}>) {}
 
    getHeaders(): HttpHeaders {
     const token = this.cookieService.get('token')
@@ -46,6 +45,12 @@ export class AuthService {
         headers: this.getHeaders()
       }
     }).valueChanges
+  }
+
+  resetPassword(userId:number,oldPassword:string,newPassword:string) {
+    return this.apollo.mutate({
+      mutation:resetPassword(userId,oldPassword,newPassword)
+    })
   }
 }
 

@@ -25,10 +25,41 @@
 
     <div class='profile__description_buttons'>
       <button *ngIf='!isEditingMode' (click)='changeEditingModeToOpposite()'>change</button>
-      <button *ngIf='!isEditingMode' (click)='changeEditingModeToOpposite()'>edit password</button>
+      <button *ngIf='!isEditingMode' (click)='resetPasswordModal.showModal()'>edit password</button>
       <div *ngIf='isEditingMode'>
         <button (click)='saveForm()'>save</button>
       </div>
     </div>
   </form>
+</div>
+
+
+<dialog #resetPasswordModal class="modal">
+  <div class="modal-box reset-password-modal">
+    <h3 class="font-bold text-lg">Hello!</h3>
+    <p class="py-4">Press ESC key or click the button below to close</p>
+    <div class="modal-action">
+      <form [formGroup]='resetPasswordForm' method="dialog" class='w-full gap-10 flex flex-col justify-center items-center'>
+        <input formControlName='oldPassword' placeholder='Enter old password' type='password' class='input-bordered input'>
+        <input formControlName='newPassword' placeholder='Enter new password' type='password' class='input-bordered input'>
+          <div class='flex gap-10'>
+            <button (click)='resetPassword()' class="btn">Reset password</button>
+            <button class="btn">Close</button>
+          </div>
+      </form>
+    </div>
+  </div>
+</dialog>
+
+
+<div *ngIf='successPasswordChanging' class="toast">
+  <div class="alert alert-info">
+    <span>Password successfully changed</span>
+  </div>
+</div>
+
+<div *ngIf='isFailServerPasswordChanging' class="toast">
+  <div class="alert alert-error">
+    <span>{{serverErrorMessage}}</span>
+  </div>
 </div>
