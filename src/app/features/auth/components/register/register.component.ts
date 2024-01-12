@@ -1,6 +1,5 @@
 import { Component, inject, OnDestroy } from '@angular/core'
 import { AuthService } from '../../services/auth.service'
-import { CookieService } from 'ngx-cookie-service'
 import { Router } from '@angular/router'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Subscription } from 'rxjs'
@@ -12,14 +11,13 @@ import { Subscription } from 'rxjs'
 })
 export class RegisterComponent implements OnDestroy {
 
+  private authService: AuthService =  inject(AuthService)
+  private router: Router = inject(Router);
+
   hasServerError: boolean = false
-
   serverErrorMessage: String = ''
-
   registerSubscription: Subscription | undefined
-
   isHintVisible: boolean = false
-
   countToRedirect: number = 3
 
   form: FormGroup = inject(FormBuilder).group({
@@ -29,9 +27,6 @@ export class RegisterComponent implements OnDestroy {
     email: [''],
     gender: ['']
   })
-
-  constructor(private authService: AuthService, private cookieService: CookieService, private router: Router) {
-  }
 
 
   async register(dialog: HTMLDialogElement) {

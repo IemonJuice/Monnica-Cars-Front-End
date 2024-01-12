@@ -3,7 +3,7 @@ import {CatalogService} from "../../services/catalog.service";
 import {Observable} from "rxjs";
 import {Car} from "../../../../core/models/car.model";
 
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-catalog',
@@ -58,6 +58,7 @@ export class CatalogComponent {
       this.carForm.getRawValue().order,
       this.carForm.getRawValue().rating);
   }
+
   getSpecificCars(searchingValue:string) {
     this.cars$ = this.catalogService.getSpecificCars(searchingValue);
   }

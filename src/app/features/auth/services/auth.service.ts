@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core'
+import { inject, Injectable } from '@angular/core'
 import { Apollo } from 'apollo-angular'
 import { HttpHeaders } from '@angular/common/http'
 import { CookieService } from 'ngx-cookie-service'
@@ -7,8 +7,6 @@ import { UserToRegister } from '../../../core/models/user-to-register.model'
 import { UserToLogin } from '../../../core/models/user-to-login.model'
 import { loginUser } from '../../../core/graphql/queries/user-login.query'
 import { getProfile } from '../../../core/graphql/queries/user-profile.query'
-import { Store } from '@ngrx/store'
-import { StateModel } from '../../../store/models/state.model'
 import { resetPassword } from '../../../core/graphql/mutations/reset-password.mutation'
 
 @Injectable({
@@ -16,9 +14,11 @@ import { resetPassword } from '../../../core/graphql/mutations/reset-password.mu
 })
 export class AuthService {
 
-  constructor(private apollo: Apollo, private cookieService: CookieService,private store:Store<{user:StateModel}>) {}
+  private apollo: Apollo = inject(Apollo)
+  private cookieService: CookieService = inject(CookieService)
 
-   getHeaders(): HttpHeaders {
+
+  getHeaders(): HttpHeaders {
     const token = this.cookieService.get('token')
     return new HttpHeaders({
       'Content-Type': 'application/json',
@@ -47,9 +47,9 @@ export class AuthService {
     }).valueChanges
   }
 
-  resetPassword(userId:number,oldPassword:string,newPassword:string) {
+  resetPassword(userId: number, oldPassword: string, newPassword: string) {
     return this.apollo.mutate({
-      mutation:resetPassword(userId,oldPassword,newPassword)
+      mutation: resetPassword(userId, oldPassword, newPassword)
     })
   }
 }
