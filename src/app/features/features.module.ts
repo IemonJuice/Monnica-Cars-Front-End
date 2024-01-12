@@ -10,6 +10,7 @@ import { AuthModule } from './auth/auth.module'
 import { ProfileModule } from './profile/profile.module'
 import { UsersModule } from './users/users.module'
 import { CheckoutModule } from './checkout/checkout.module'
+import { FileModule } from './file/file.module'
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { CheckoutModule } from './checkout/checkout.module'
     AuthModule,
     ProfileModule,
     UsersModule,
-    CheckoutModule
+    CheckoutModule,
+    FileModule
   ],
   exports: [
     NavbarModule,
@@ -37,7 +39,8 @@ import { CheckoutModule } from './checkout/checkout.module'
     AuthModule,
     ProfileModule,
     UsersModule,
-    CheckoutModule
+    CheckoutModule,
+    FileModule
   ]
 })
 export class FeaturesModule {

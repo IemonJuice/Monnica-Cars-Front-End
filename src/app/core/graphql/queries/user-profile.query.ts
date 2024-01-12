@@ -11,6 +11,7 @@ export const getProfile = () => {
         age
         gender
         password
+        avatarImageName
       }
     }
   `;

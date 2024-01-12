@@ -6,6 +6,7 @@ export interface Profile{
       email:string;
       gender:string;
       username:string;
+      avatarImageName:string;
     }
   }
 }

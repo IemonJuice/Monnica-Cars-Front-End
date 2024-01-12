@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { UsersService } from '../../users/services/users.service'
 import { Store } from '@ngrx/store'
 import { StateModel } from '../../../store/models/state.model'
+import { FileService } from '../../file/services/file.service'
 
 
 @Component({
@@ -14,6 +15,7 @@ import { StateModel } from '../../../store/models/state.model'
   styleUrl: './profile.component.scss'
 })
 export class ProfileComponent implements OnInit, OnDestroy {
+  imageSrc: any;
   profile?: Observable<Profile>
   isEditingMode: boolean = false
   store: Store<{ user: StateModel }> = inject(Store<{ user: StateModel }>)
@@ -34,10 +36,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
   successPasswordChanging: boolean = false
 
   isFailServerPasswordChanging: boolean = false
+
   serverErrorMessage: string = ''
 
-  constructor(private authService: AuthService, private usersService: UsersService) {
-  }
+
+
+  constructor(private authService: AuthService,
+              private imageService: FileService,
+              private usersService: UsersService) {}
 
   ngOnInit() {
 
@@ -54,7 +60,24 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.profileForm.get('age')?.setValue(profile.data.profile.age)
       this.profileForm.get('id')?.setValue(profile.data.profile.id)
       this.resetPasswordForm.get('userId')?.setValue(profile.data.profile.id)
+      this.getUserAvatar(profile);
     })
+  }
+  getUserAvatar(profile:Profile) {
+
+    const imageName = profile.data.profile.avatarImageName
+    this.imageService.getImage(imageName).subscribe(
+      (data: Blob) => {
+        const reader = new FileReader()
+        reader.onloadend = () => {
+          this.imageSrc = reader.result
+        }
+        reader.readAsDataURL(data)
+      },
+      (error) => {
+        console.error('Error loading image:', error)
+      }
+    )
   }
 
   changeEditingModeToOpposite() {
@@ -85,7 +108,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
     const newPassword: string = this.resetPasswordForm.get('newPassword')?.getRawValue()
     const userId: number = this.resetPasswordForm.get('userId')?.getRawValue()
     if (this.resetPasswordForm.valid) {
-
       this.usersService.resetPassword(userId, oldPassword, newPassword).subscribe({
         next: () => {
           this.successPasswordChanging = true
@@ -104,6 +126,27 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy(): void {}
+  uploadImage(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imageSrc = reader.result;
+      };
+      reader.readAsDataURL(file);
+    }
 
+    if (file) {
+      this.imageService.uploadImage(file).subscribe(
+        (response) => {
+          console.log('Image uploaded successfully:', response);
+        },
+        (error) => {
+          console.log('Error uploading image:', error);
+        }
+      );
+    }
+  }
+
+  ngOnDestroy(): void {}
 }

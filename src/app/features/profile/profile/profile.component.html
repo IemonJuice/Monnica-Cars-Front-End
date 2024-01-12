@@ -2,7 +2,8 @@
   <div class='profile__image'>
     <div class='profile__username'>Welcome back!</div>
     <div class='profile__image_avatar'>
-      <input type='file' >
+      <img class='profile__avatar' [src]='imageSrc' alt=''>
+      <input (change)='uploadImage($event)' type='file' >
     </div>
    <div class='profile__username'>{{profileForm.get('username')?.value}}</div>
   </div>
@@ -24,8 +25,10 @@
     <input formControlName='age'  value='{{profile?.data?.profile?.age}}' [disabled]='!isEditingMode'>
 
     <div class='profile__description_buttons'>
+
       <button *ngIf='!isEditingMode' (click)='changeEditingModeToOpposite()'>change</button>
       <button *ngIf='!isEditingMode' (click)='resetPasswordModal.showModal()'>edit password</button>
+
       <div *ngIf='isEditingMode'>
         <button (click)='saveForm()'>save</button>
       </div>
