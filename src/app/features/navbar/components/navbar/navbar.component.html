@@ -1,7 +1,7 @@
 <nav class='nav'>
   <div class='container'>
 
-    <div class='nav__logo'>
+    <div routerLink="/main"  class='nav__logo'>
       <img src='./assets/images/logo.png' alt=''>
     </div>
 
@@ -9,38 +9,35 @@
       <ul>
 
         <li routerLink='/main'>
-          <img src='./assets/images/home.svg' alt='home'>Home
+          <img ngSrc='./assets/images/home.svg' alt='home' height="24" width="24">Home
         </li>
 
         <li routerLink='/catalog'>
-          <img src='./assets/images/catalog.svg' alt='catalog'>Catalog
+          <img ngSrc='./assets/images/catalog.svg' alt='catalog' height="24" width="24">Catalog
         </li>
 
-        <li routerLink='/feedback'>
-          <img src='./assets/images/feedback.svg' alt='feedback'>Feedback
-        </li>
 
         <li *ngIf='!isTokenAvailable' routerLink='/auth/login'>
-          <img src='./assets/images/login.svg' alt=''>
-          Sign in
+          <img ngSrc='./assets/images/login.svg' alt='' height="24" width="24">
+          Signin
         </li>
 
         <li *ngIf='!isTokenAvailable' routerLink='/auth/register'>
-          <img src='./assets/images/register.svg' alt=''>
-          Sign up
+          <img ngSrc='./assets/images/register.svg' alt='' height="24" width="24">
+          Signup
         </li>
 
         <li *ngIf='isTokenAvailable' (click)='logout()'>
-          <img src='./assets/images/logout.svg' alt=''>
+          <img ngSrc='./assets/images/logout.svg' alt='' height="24" width="24">
           Logout
         </li>
 
-        <li routerLink='/checkout'><img src='./assets/images/checkout.svg' alt=''>
-
+        <li routerLink='/checkout'><img ngSrc='./assets/images/checkout.svg' alt='' height="24" width="24">
+          Basket
         </li>
 
         <li *ngIf='isTokenAvailable' routerLink='/account'>
-          <img src='./assets/images/profile.svg' alt=''>
+          <img ngSrc='./assets/images/profile.svg' alt='' height="24" width="24">
         </li>
 
       </ul>
@@ -56,48 +53,45 @@
 
       <ul class='burger__content'>
 
-        <li routerLink='/main'>
-          <img src='./assets/images/home.svg' alt='home'>Home
+        <li (click)='makeOppositeBurgerContentVisibility()' routerLink='/main'>
+          <img ngSrc='./assets/images/home.svg' alt='home' height="24" width="24">Home
         </li>
 
-        <li routerLink='/catalog'>
-          <img src='./assets/images/catalog.svg' alt='catalog'>Catalog
+        <li (click)='makeOppositeBurgerContentVisibility()' routerLink='/catalog'>
+          <img ngSrc='./assets/images/catalog.svg' alt='catalog' height="24" width="24">Catalog
         </li>
 
-        <li routerLink='/feedback'>
-          <img src='./assets/images/feedback.svg' alt='feedback'>Feedback
+
+        <li (click)='makeOppositeBurgerContentVisibility()' routerLink='/checkout'>
+          <img ngSrc='./assets/images/checkout.svg' alt='checkout' height="24" width="24">Basket
         </li>
 
-        <li routerLink='/checkout'>
-          <img src='./assets/images/checkout.svg' alt='checkout'>Checkout
+        <li (click)='makeOppositeBurgerContentVisibility()' *ngIf='isTokenAvailable'  routerLink='/account'>
+          <img ngSrc='./assets/images/profile.svg' alt='profile' height="24" width="24">Profile
         </li>
 
-        <li routerLink='/account'>
-          <img src='./assets/images/profile.svg' alt='profile'>Profile
-        </li>
-
-        <li  *ngIf='!isTokenAvailable' routerLink='/auth/login'>
-          <img src='./assets/images/login.svg' alt=''>
+        <li (click)='makeOppositeBurgerContentVisibility()'  *ngIf='!isTokenAvailable' routerLink='/auth/login'>
+          <img ngSrc='./assets/images/login.svg' alt='' height="24" width="24">
           Login
         </li>
 
-        <li *ngIf='!isTokenAvailable' routerLink='/auth/register'>
-          <img src='./assets/images/register.svg' alt=''>
+        <li (click)='makeOppositeBurgerContentVisibility()' *ngIf='!isTokenAvailable' routerLink='/auth/register'>
+          <img ngSrc='./assets/images/register.svg' alt='' height="24" width="24">
           Register
         </li>
 
-        <li *ngIf='isTokenAvailable' routerLink='/auth/register'>
-          <img src='./assets/images/logout.svg' alt=''>
+        <li (click)='makeOppositeBurgerContentVisibility()' *ngIf='isTokenAvailable' routerLink='/auth/register'>
+          <img ngSrc='./assets/images/logout.svg' alt='' height="24" width="24">
           Logout
         </li>
 
         <div class='burger__content_exit exit'>
 
-          <img width='150' src='./assets/images/logo.png' alt=''>
+          <img width='150' ngSrc='./assets/images/logo.png' alt='' height="150">
 
           <div (click)='makeOppositeBurgerContentVisibility()' class='exit__button'>
 
-            <img width='40' src='./assets/images/cancel.svg' alt=''>
+            <img width='40' ngSrc='./assets/images/cancel.svg' alt='' height="40">
           </div>
 
         </div>

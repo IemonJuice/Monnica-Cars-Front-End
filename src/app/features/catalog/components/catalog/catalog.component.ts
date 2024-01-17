@@ -18,8 +18,8 @@ export class CatalogComponent {
 
   catalogService: CatalogService = inject(CatalogService)
   carForm: FormGroup = inject(FormBuilder).group({
-    order: [null],
-    rating: [null],
+    order: ["Price"],
+    rating: ['Rating'],
     currentPage: [this.currentPage],
   });
 

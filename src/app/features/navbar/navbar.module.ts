@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {RouterLink} from "@angular/router";
 
@@ -14,7 +14,8 @@ import {RouterLink} from "@angular/router";
     ],
     imports: [
         CommonModule,
-        RouterLink
+        RouterLink,
+        NgOptimizedImage
     ]
 })
 export class NavbarModule { }

@@ -20,12 +20,14 @@
 
     img {
       height: 150px;
-      object-fit: contain;
+      object-fit: cover;
       transition-duration: 200ms;
 
       &:hover {
-        transition-duration: 200ms;
-        scale: 2;
+        transition-duration: 1000ms;
+        scale:-1;
+        filter: blur(1px);
+        cursor: pointer;
       }
     }
   }
@@ -49,7 +51,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap:2px;
+      gap: 2px;
       transition-duration: 400ms;
     }
   }
@@ -119,10 +121,11 @@
       color: white;
       font-size: 3em;
     }
-    .exit{
-      &__button{
+
+    .exit {
+      &__button {
         position: fixed;
-        top:20px;
+        top: 20px;
         right: 20px;
       }
     }
