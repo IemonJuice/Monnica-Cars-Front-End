@@ -1,6 +1,18 @@
-<div data-aos='zoom-up' data-aos-duration='2000'  class='basket__content_car'>
-  <img [src]='car?.imagesUrl![0].imageUrl' alt=''>
-  <div>{{car?.price | currency}}</div>
-  <div>quantity </div>
-  <button (click)='removeCarFromTheCheckoutList()'>remove</button>
+<div data-aos='zoom-up' data-aos-duration='2000' class='basket__content_car'>
+  <img [src]='car!.imagesUrl![0].imageUrl' alt=''>
+  <div>{{ car!.price * quantity | currency }}</div>
+  <div>
+    <button (click)="decreaseQuantity()" class="btn btn-circle mr-2.5">
+    -
+    </button>
+    <span class="text-base-100">[</span>{{ quantity }}<span class="text-base-100">]</span>
+    <button (click)="increaseQuantity()" class="btn btn-circle ml-2.5">
+      +
+    </button>
+  </div>
+  <button class="btn btn-square btn-outline" (click)='removeCarFromTheCheckoutList()'>
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+    </svg>
+  </button>
 </div>

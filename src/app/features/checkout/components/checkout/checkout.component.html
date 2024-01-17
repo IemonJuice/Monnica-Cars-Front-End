@@ -1,22 +1,30 @@
 <div class='basket'>
 
- <div class='basket__heading'>
-
- </div>
+  <div class='basket__heading'>
+    <span *ngIf="totalCount>0">Confirm your checkout</span>
+    <span *ngIf="totalCount===0">Basket is empty :)</span>
+  </div>
 
   <div class='basket__content'>
-    <div  class='basket__content_list'>
+    <div class='basket__content_list'>
 
 
       <div class='basket__content_car'>
-        <app-checkout-item *ngFor='let basketItem of (checkout | async)?.data?.profile?.basket' [car]='basketItem'></app-checkout-item>
+        <app-checkout-item *ngFor='let basketItem of (checkout | async)?.data?.profile?.basket'
+                           (priceEmitter)="getEmittedPrice($event)" [car]='basketItem'></app-checkout-item>
       </div>
 
     </div>
 
     <div class='basket__content_summary'>
-      <div class='basket__content_total-count'>TOTAL COUNT</div>
+      <div class='basket__content_total-count'><span
+        class="text-base-100 font-bold">TOTAL</span> {{ totalCount | currency }}
+      </div>
+      <div>
+        <button *ngIf="totalCount>0" class="btn btn-wide">Confirm</button>
+        <button routerLink="/catalog" *ngIf="totalCount==0" class="btn btn-wide btn-outline">Add car to the basket</button>
+      </div>
     </div>
   </div>
 </div>
-<!-- id hp PRICE RELEASEDate imagesurl:[id,imageUrl] -->
+

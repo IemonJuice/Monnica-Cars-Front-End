@@ -7,7 +7,7 @@
   align-items: center;
   flex-direction: column;
   gap: 10px;
-
+  font-family: "JetBrains Mono", serif!important;
   &__heading {
     display: flex;
     justify-content: center;
@@ -20,7 +20,6 @@
     font-weight: bolder;
     font-family: "JetBrains Mono", sans-serif;
   }
-
   &__content {
     width: 90%;
     height: 80%;
@@ -29,7 +28,14 @@
     justify-content: center;
     align-items: center;
 
+    &_total-count{
 
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      flex-direction: column;
+      font-size: 3em;
+    }
 
     &_list {
       width: 70%;
@@ -40,6 +46,11 @@
     }
 
     &_summary {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      flex-direction: column;
       width: 30%;
       height: 100%;
       outline: 1px solid black;

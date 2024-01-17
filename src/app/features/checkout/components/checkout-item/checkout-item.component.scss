@@ -1,11 +1,15 @@
 .basket{
   &__content{
+    padding: 10px;
     &_car{
+      font-family: "JetBrains Mono", serif!important;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      width: 100%;
+      width: 90%;
       height: 200px;
+      border-bottom: 1px solid #b3b3b3;
       img{
         width: 300px;
         height: 100%;

@@ -1,7 +1,7 @@
-import { Component,  OnInit } from '@angular/core'
-import { UsersService } from '../../../users/services/users.service'
-import { Observable } from 'rxjs'
-import { Car } from '../../../../core/models/car.model'
+import {Component, OnInit} from '@angular/core'
+import {UsersService} from '../../../users/services/users.service'
+import {Observable} from 'rxjs'
+import {Car} from '../../../../core/models/car.model'
 
 
 @Component({
@@ -11,11 +11,35 @@ import { Car } from '../../../../core/models/car.model'
 })
 export class CheckoutComponent implements OnInit {
   checkout?: Observable<{ data: { profile: { basket: Car[] } } }>
+  totalCount: number = 0;
 
-  constructor(private usersService: UsersService,) {}
+  constructor(private usersService: UsersService,) {
+  }
 
   ngOnInit(): void {
-      this.checkout = this.usersService.getCheckout() as Observable<{ data: { profile: { basket: Car[] } } }>;
-      this.checkout.subscribe((d) => console.log(d));
+    this.checkout = this.usersService.getCheckout() as Observable<{ data: { profile: { basket: Car[] } } }>;
+  }
+
+  getEmittedPrice($event: any) {
+
+    const [price, operation] = $event;
+
+    switch (operation) {
+      case '=':
+        this.totalCount += price;
+        break;
+
+      case '-':
+        this.totalCount -= price;
+        break;
+
+      case '--':
+        this.totalCount = 0;
+        break;
+
+      case '+':
+        this.totalCount += price;
+        break;
+    }
   }
 }
