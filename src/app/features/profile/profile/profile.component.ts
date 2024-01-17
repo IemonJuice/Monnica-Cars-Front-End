@@ -1,12 +1,12 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core'
-import { AuthService } from '../../auth/services/auth.service'
-import { Profile } from '../../../core/models/profile.model'
-import { Observable } from 'rxjs'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { UsersService } from '../../users/services/users.service'
-import { Store } from '@ngrx/store'
-import { StateModel } from '../../../store/models/state.model'
-import { FileService } from '../../file/services/file.service'
+import {Component, inject, OnDestroy, OnInit} from '@angular/core'
+import {AuthService} from '../../auth/services/auth.service'
+import {Profile} from '../../../core/models/profile.model'
+import {Observable} from 'rxjs'
+import {FormBuilder, FormGroup, Validators} from '@angular/forms'
+import {UsersService} from '../../users/services/users.service'
+import {Store} from '@ngrx/store'
+import {StateModel} from '../../../store/models/state.model'
+import {FileService} from '../../file/services/file.service'
 
 
 @Component({
@@ -40,10 +40,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
   serverErrorMessage: string = ''
 
 
-
   constructor(private authService: AuthService,
               private imageService: FileService,
-              private usersService: UsersService) {}
+              private usersService: UsersService) {
+  }
 
   ngOnInit() {
 
@@ -63,7 +63,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.getUserAvatar(profile);
     })
   }
-  getUserAvatar(profile:Profile) {
+
+  getUserAvatar(profile: Profile) {
 
     const imageName = profile.data.profile.avatarImageName
     this.imageService.getImage(imageName).subscribe(
@@ -81,14 +82,21 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   changeEditingModeToOpposite() {
-
-    this.profileForm.get('username')?.enable()
-    this.profileForm.get('email')?.enable()
-    this.profileForm.get('password')?.enable()
-    this.profileForm.get('gender')?.enable()
-    this.profileForm.get('age')?.enable()
-    this.isEditingMode = !this.isEditingMode
-
+    if (!this.isEditingMode) {
+      this.profileForm.get('username')?.enable()
+      this.profileForm.get('email')?.enable()
+      this.profileForm.get('password')?.enable()
+      this.profileForm.get('gender')?.enable()
+      this.profileForm.get('age')?.enable()
+      this.isEditingMode = !this.isEditingMode
+    } else {
+      this.profileForm.get('username')?.disable()
+      this.profileForm.get('email')?.disable()
+      this.profileForm.get('password')?.disable()
+      this.profileForm.get('gender')?.disable()
+      this.profileForm.get('age')?.disable()
+      this.isEditingMode = !this.isEditingMode
+    }
   }
 
   saveForm() {
@@ -148,5 +156,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+  }
 }

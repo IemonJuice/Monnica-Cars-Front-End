@@ -37,17 +37,22 @@ export class CarDescriptionComponent implements OnInit, OnDestroy {
       const carId = car?.data?.getCar?.id
 
       if (userId !== undefined && carId !== undefined) {
+
         this.subscription = this.carsService.addCarToTheCheckout(userId, carId).subscribe()
         if (this.isCarAddedToTheCache) {
+
           this.hasAlreadyAddedToTheCheckout = true;
           setTimeout(() => {
             this.hasAlreadyAddedToTheCheckout = false;
           }, 2000)
+
         } else {
+
           this.isAddedToTheCheckout = true
           setTimeout(() => {
             this.isAddedToTheCheckout = false;
           }, 2000)
+
         }
         this.isCarAddedToTheCache = true;
       }

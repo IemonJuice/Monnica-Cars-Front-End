@@ -27,6 +27,7 @@
     <div class='profile__description_buttons'>
 
       <button *ngIf='!isEditingMode' (click)='changeEditingModeToOpposite()'>change</button>
+      <button *ngIf='isEditingMode' (click)='changeEditingModeToOpposite()'>close</button>
       <button *ngIf='!isEditingMode' (click)='resetPasswordModal.showModal()'>edit password</button>
 
       <div *ngIf='isEditingMode'>
