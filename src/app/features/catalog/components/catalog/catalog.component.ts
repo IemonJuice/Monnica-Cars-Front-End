@@ -46,6 +46,9 @@ export class CatalogComponent {
   }
 
   getFilteredByRatingCars() {
+    this.currentPage = 1
+    this.carForm.get('currentPage')?.setValue(1)
+
     this.cars$ = this.catalogService.getFilteredCars(
       this.currentPage,
       Number(this.carForm.getRawValue().rating),
@@ -53,13 +56,19 @@ export class CatalogComponent {
   }
 
   getSortedByPriceCars() {
+    this.currentPage = 1
+    this.carForm.get('currentPage')?.setValue(1)
+
     this.cars$ = this.catalogService.getSortedByPrice(
       this.currentPage,
       this.carForm.getRawValue().order,
       this.carForm.getRawValue().rating);
   }
 
-  getSpecificCars(searchingValue:string) {
+  getSpecificCars(searchingValue: string) {
+    this.currentPage = 1
+    this.carForm.get('currentPage')?.setValue(1)
+    
     this.cars$ = this.catalogService.getSpecificCars(searchingValue);
   }
 }
