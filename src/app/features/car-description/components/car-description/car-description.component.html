@@ -36,3 +36,15 @@
     </div>
   </div>
 </div>
+
+<div *ngIf="isAddedToTheCheckout" class="toast toast-top toast-end">
+  <div class="alert alert-success">
+    <span>Car was successfuly added to the checkout</span>
+  </div>
+</div>
+
+<div *ngIf="hasAlreadyAddedToTheCheckout" class="toast toast-top toast-end">
+  <div class="alert alert-warning">
+    <span>Car has already added to the checkout</span>
+  </div>
+</div>

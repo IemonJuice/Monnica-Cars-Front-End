@@ -1,10 +1,10 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core'
-import { ActivatedRoute, Params } from '@angular/router'
-import { combineLatest, Observable, Subscription, take } from 'rxjs'
-import { Car } from '../../../../core/models/car.model'
-import { CarDescriptionService } from '../../services/car-description.service'
-import { StateModel } from '../../../../store/models/state.model'
-import { Store } from '@ngrx/store'
+import {Component, inject, OnDestroy, OnInit} from '@angular/core'
+import {ActivatedRoute, Params} from '@angular/router'
+import {combineLatest, fromEvent, Observable, Subscription, take} from 'rxjs'
+import {Car} from '../../../../core/models/car.model'
+import {CarDescriptionService} from '../../services/car-description.service'
+import {StateModel} from '../../../../store/models/state.model'
+import {Store} from '@ngrx/store'
 
 @Component({
   selector: 'app-car-description',
@@ -18,6 +18,9 @@ export class CarDescriptionComponent implements OnInit, OnDestroy {
   route: ActivatedRoute = inject(ActivatedRoute)
   store: Store<{ user: StateModel }> = inject(Store<{ user: StateModel }>)
   subscription: Subscription | undefined
+  isAddedToTheCheckout: boolean = false;
+  isCarAddedToTheCache: boolean = false;
+  hasAlreadyAddedToTheCheckout: boolean = false;
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -35,6 +38,18 @@ export class CarDescriptionComponent implements OnInit, OnDestroy {
 
       if (userId !== undefined && carId !== undefined) {
         this.subscription = this.carsService.addCarToTheCheckout(userId, carId).subscribe()
+        if (this.isCarAddedToTheCache) {
+          this.hasAlreadyAddedToTheCheckout = true;
+          setTimeout(() => {
+            this.hasAlreadyAddedToTheCheckout = false;
+          }, 2000)
+        } else {
+          this.isAddedToTheCheckout = true
+          setTimeout(() => {
+            this.isAddedToTheCheckout = false;
+          }, 2000)
+        }
+        this.isCarAddedToTheCache = true;
       }
     })
   }
