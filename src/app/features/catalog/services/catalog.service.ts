@@ -3,8 +3,9 @@ import {Injectable} from '@angular/core';
 import {Apollo} from "apollo-angular";
 import {getCars} from "../../../core/graphql/queries/cars.query";
 
-import {Observable} from "rxjs";
+import {debounceTime, interval, Observable, switchMap} from "rxjs";
 import {Car} from "../../../core/models/car.model";
+import internal from "node:stream";
 
 
 

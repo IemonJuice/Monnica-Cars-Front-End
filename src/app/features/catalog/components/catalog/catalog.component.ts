@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {CatalogService} from "../../services/catalog.service";
-import {Observable} from "rxjs";
+import {debounce, debounceTime, interval, Observable, switchMap, throttleTime, timer} from "rxjs";
 import {Car} from "../../../../core/models/car.model";
 
 import {FormBuilder, FormGroup} from "@angular/forms";
@@ -56,9 +56,8 @@ export class CatalogComponent {
   }
 
   getSortedByPriceCars() {
-    this.currentPage = 1
-    this.carForm.get('currentPage')?.setValue(1)
-
+    if (this.carForm.getRawValue().rating)
+      this.carForm.get('rating')?.setValue('null')
     this.cars$ = this.catalogService.getSortedByPrice(
       this.currentPage,
       this.carForm.getRawValue().order,
@@ -68,7 +67,9 @@ export class CatalogComponent {
   getSpecificCars(searchingValue: string) {
     this.currentPage = 1
     this.carForm.get('currentPage')?.setValue(1)
-    
-    this.cars$ = this.catalogService.getSpecificCars(searchingValue);
+
+    this.cars$ = this.catalogService.getSpecificCars(searchingValue).pipe(
+      debounceTime(500)
+    );
   }
 }

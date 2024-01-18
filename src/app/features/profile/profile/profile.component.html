@@ -3,26 +3,26 @@
     <div class='profile__username'>Welcome back!</div>
     <div class='profile__image_avatar'>
       <img class='profile__avatar' [src]='imageSrc' alt=''>
-      <input (change)='uploadImage($event)' type='file' >
+      <input (change)='uploadImage($event)' type='file'>
     </div>
-   <div class='profile__username'>{{profileForm.get('username')?.value}}</div>
+    <div class='profile__username'>{{ profileForm.get('username')?.value }}</div>
   </div>
 
   <form [formGroup]='profileForm' class='profile__description'>
 
     <label>gender</label>
-    <input formControlName='gender' value='{{profile?.data?.profile?.gender}}' >
+    <input formControlName='gender' value='{{profile?.data?.profile?.gender}}'>
 
 
     <label>username</label>
-    <input formControlName='username'  value='{{profile?.data?.profile?.username}}'>
+    <input formControlName='username' value='{{profile?.data?.profile?.username}}'>
 
 
     <label>email</label>
-    <input formControlName='email'  type='email' value='{{profile?.data?.profile?.email}}' [disabled]='!isEditingMode'>
+    <input formControlName='email' type='email' value='{{profile?.data?.profile?.email}}' [disabled]='!isEditingMode'>
 
     <label>age</label>
-    <input formControlName='age'  value='{{profile?.data?.profile?.age}}' [disabled]='!isEditingMode'>
+    <input formControlName='age' value='{{profile?.data?.profile?.age}}' [disabled]='!isEditingMode'>
 
     <div class='profile__description_buttons'>
 
@@ -43,13 +43,16 @@
     <h3 class="font-bold text-lg">Hello!</h3>
     <p class="py-4">Press ESC key or click the button below to close</p>
     <div class="modal-action">
-      <form [formGroup]='resetPasswordForm' method="dialog" class='w-full gap-10 flex flex-col justify-center items-center'>
-        <input formControlName='oldPassword' placeholder='Enter old password' type='password' class='input-bordered input'>
-        <input formControlName='newPassword' placeholder='Enter new password' type='password' class='input-bordered input'>
-          <div class='flex gap-10'>
-            <button (click)='resetPassword()' class="btn">Reset password</button>
-            <button class="btn">Close</button>
-          </div>
+      <form [formGroup]='resetPasswordForm' method="dialog"
+            class='w-full gap-10 flex flex-col justify-center items-center'>
+        <input formControlName='oldPassword' placeholder='Enter old password' type='password'
+               class='input-bordered input'>
+        <input formControlName='newPassword' placeholder='Enter new password' type='password'
+               class='input-bordered input'>
+        <div class='flex gap-10'>
+          <button (click)='resetPassword()' class="btn">Reset password</button>
+          <button class="btn">Close</button>
+        </div>
       </form>
     </div>
   </div>
@@ -64,6 +67,6 @@
 
 <div *ngIf='isFailServerPasswordChanging' class="toast">
   <div class="alert alert-error">
-    <span>{{serverErrorMessage}}</span>
+    <span>{{ serverErrorMessage }}</span>
   </div>
 </div>

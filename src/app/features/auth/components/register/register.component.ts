@@ -23,9 +23,9 @@ export class RegisterComponent implements OnDestroy {
   form: FormGroup = inject(FormBuilder).group({
     username: ['', [Validators.required]],
     password: ['', [Validators.required, Validators.min(8)]],
-    age: [''],
-    email: [''],
-    gender: ['']
+    age: ['',[Validators.required,Validators.min(18)]],
+    email: ['',[Validators.required,Validators.email]],
+    gender: ['',Validators.required]
   })
 
 

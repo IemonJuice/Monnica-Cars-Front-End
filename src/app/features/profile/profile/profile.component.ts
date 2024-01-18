@@ -8,6 +8,7 @@ import {Store} from '@ngrx/store'
 import {StateModel} from '../../../store/models/state.model'
 import {FileService} from '../../file/services/file.service'
 
+//TODO never do things like that :(
 
 @Component({
   selector: 'app-profile',
@@ -18,6 +19,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
   imageSrc: any;
   profile?: Observable<Profile>
   isEditingMode: boolean = false
+  successPasswordChanging: boolean = false
+  isFailServerPasswordChanging: boolean = false
+  serverErrorMessage: string = ''
+
   store: Store<{ user: StateModel }> = inject(Store<{ user: StateModel }>)
 
   profileForm: FormGroup = inject(FormBuilder).group({
@@ -33,17 +38,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
     newPassword: ['', [Validators.required, Validators.min(8)]],
     oldPassword: ['', [Validators.required, Validators.min(8)]]
   })
-  successPasswordChanging: boolean = false
+  private authService: AuthService = inject(AuthService)
+  private imageService: FileService = inject(FileService)
+  private usersService: UsersService = inject(UsersService)
 
-  isFailServerPasswordChanging: boolean = false
-
-  serverErrorMessage: string = ''
-
-
-  constructor(private authService: AuthService,
-              private imageService: FileService,
-              private usersService: UsersService) {
-  }
 
   ngOnInit() {
 
